@@ -19,3 +19,5 @@
 - [ ] Cobrança por hora com valores acessíveis e finais comerciais pedidos
 - [ ] Ajustar taxas para US$50 a US$100 por hora (pedido mais recente)
 - [ ] Remover plantas e usar fundo totalmente branco (substitui cantos amarelos/natureza)
+- [ ] Botões em preto e branco
+- [ ] Slides horizontais animados nos grupos de cards, movendo à esquerda ao rolar
