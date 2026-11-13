@@ -11,7 +11,7 @@ import { profile } from "@/data/profile";
 
 export const Route = createFileRoute("/simulador")({
   head: () => ({
-    meta: [
+    meta: [{ property: "og:type", content: "website" },{ name: "twitter:card", content: "summary_large_image" },
       { title: "Simulador de projeto — Matheus Roberto de Oliveira" },
       { name: "description", content: "Monte seu projeto de IA, automação ou governança e veja uma estimativa de investimento e prazo." },
       { property: "og:title", content: "Simule um projeto comigo" },

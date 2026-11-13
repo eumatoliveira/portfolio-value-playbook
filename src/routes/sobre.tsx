@@ -6,7 +6,7 @@ import { certifications, languages, profile, skills } from "@/data/profile";
 
 export const Route = createFileRoute("/sobre")({
   head: () => ({
-    meta: [
+    meta: [{ property: "og:type", content: "website" },{ name: "twitter:card", content: "summary_large_image" },
       { title: "Sobre — Matheus Roberto de Oliveira" },
       { name: "description", content: "Program Manager na interseção de IA, engenharia de software, transformação digital e estratégia." },
       { property: "og:title", content: "Sobre — Matheus Roberto de Oliveira" },

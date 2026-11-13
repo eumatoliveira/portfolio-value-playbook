@@ -7,7 +7,7 @@ import { company } from "@/data/company";
 
 export const Route = createFileRoute("/contato")({
   head: () => ({
-    meta: [
+    meta: [{ property: "og:type", content: "website" },{ name: "twitter:card", content: "summary_large_image" },
       { title: "Contato — Matheus Roberto de Oliveira" },
       { name: "description", content: "Vamos conversar sobre IA, programas de tecnologia e transformação digital." },
       { property: "og:title", content: "Contato — Matheus Roberto de Oliveira" },

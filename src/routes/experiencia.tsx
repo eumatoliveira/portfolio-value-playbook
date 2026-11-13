@@ -5,7 +5,7 @@ import { experience } from "@/data/profile";
 
 export const Route = createFileRoute("/experiencia")({
   head: () => ({
-    meta: [
+    meta: [{ property: "og:type", content: "website" },{ name: "twitter:card", content: "summary_large_image" },
       { title: "Experiência — Matheus Roberto de Oliveira" },
       { name: "description", content: "Trajetória em IA, program management, governança e transformação digital." },
       { property: "og:title", content: "Experiência — Matheus Roberto de Oliveira" },

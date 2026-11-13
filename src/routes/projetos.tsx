@@ -6,7 +6,7 @@ import { CardSlides } from "@/components/CardSlides";
 
 export const Route = createFileRoute("/projetos")({
   head: () => ({
-    meta: [
+    meta: [{ property: "og:type", content: "website" },{ name: "twitter:card", content: "summary_large_image" },
       { title: "Projetos — Matheus Roberto de Oliveira" },
       { name: "description", content: "PluraTalks, GLX Control Tower, governança de portfólio e avaliação de LLMs." },
       { property: "og:title", content: "Projetos — Matheus Roberto de Oliveira" },

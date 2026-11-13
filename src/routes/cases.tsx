@@ -11,7 +11,7 @@ import { CardSlides } from "@/components/CardSlides";
 
 export const Route = createFileRoute("/cases")({
   head: () => ({
-    meta: [
+    meta: [{ property: "og:type", content: "website" },{ name: "twitter:card", content: "summary_large_image" },
       { title: "Cases de sucesso — Matheus Roberto de Oliveira" },
       { name: "description", content: "Resultados reais em IA, automação, governança e venture building." },
       { property: "og:title", content: "Cases de sucesso — Matheus Roberto de Oliveira" },
