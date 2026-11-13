@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { computeQuote } from "@/lib/quote";
+import { computeQuote, services } from "@/lib/quote";
 
 describe("simulador", () => {
   it("soma sem desconto com 2 serviços", () => {

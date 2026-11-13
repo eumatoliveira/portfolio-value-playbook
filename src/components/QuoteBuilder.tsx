@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { AnimatePresence, animate, motion, useMotionValue, useTransform } from "framer-motion";
 import { ArrowRight, Check } from "lucide-react";
@@ -10,7 +10,10 @@ const DEFAULT_IDS = ["discovery", "genai", "automation"];
 function AnimatedBRL({ value }: { value: number }) {
   const mv = useMotionValue(value);
   const text = useTransform(mv, (v) => brl(Math.round(v)));
-  animate(mv, value, { duration: 0.7, ease: [0.2, 0.7, 0.2, 1] });
+  useEffect(() => {
+    const controls = animate(mv, value, { duration: 0.7, ease: [0.2, 0.7, 0.2, 1] });
+    return () => controls.stop();
+  }, [mv, value]);
   return <motion.span>{text}</motion.span>;
 }
 
