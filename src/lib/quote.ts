@@ -1,3 +1,13 @@
+// ============================================================
+//  ARQUIVO ÚNICO DE VALORES DO SIMULADOR
+//  Edite tudo aqui — a página inicial e a página /simulador
+//  usam exatamente esta lista.
+//
+//  price = valor em reais (R$)   |   weeks = prazo estimado em semanas
+//  id = chave interna (mude só se souber o que está fazendo)
+//  group = agrupa os serviços na tela
+// ============================================================
+
 export type Service = { id: string; group: string; label: string; detail: string; price: number; weeks: number };
 
 export const services: Service[] = [

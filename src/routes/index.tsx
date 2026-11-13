@@ -5,6 +5,7 @@ import portrait from "@/assets/matheus-portrait.jpeg.asset.json";
 import { SiteShell } from "@/components/SiteShell";
 import { Tools } from "@/components/Tools";
 import { ImpactCharts } from "@/components/ImpactChart";
+import { QuoteBuilder } from "@/components/QuoteBuilder";
 import { audience, impact, profile } from "@/data/profile";
 
 export const Route = createFileRoute("/")({
@@ -61,6 +62,7 @@ function Index() {
         </div>
       </section>
 
+      <QuoteBuilder />
       <ImpactCharts />
       <Tools />
       <section className="mx-auto max-w-6xl px-5 pb-24">
