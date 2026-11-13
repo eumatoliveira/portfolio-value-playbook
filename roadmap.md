@@ -4,9 +4,19 @@
 - [x] Cases de sucesso com imagens geradas
 - [x] Seção de sistemas/ferramentas que uso
 - [x] Animações (framer-motion), efeito liquid glass, gráficos
-- [ ] Fade e deslocamento nas seções da home, cards escalonados e botões suaves com movimento reduzido
-- [ ] Vídeo do YouTube como prova social na home
-- [ ] Exibir resultados financeiros em dólar (aguarda taxa de conversão)
-- [ ] Reconhecimento da Plura por startup de impacto com apoio de grupo da Insper JR
-- [ ] Área de clientes e administrador: login, chamados, serviços, atualizações e mensagens
-- [ ] Agendamento de suporte por Calendly ou Google Meet
+- [x] Fade e deslocamento nas seções da home, botões suaves e movimento reduzido
+- [x] Vídeo do YouTube como prova social na home
+- [x] Resultados financeiros em real, dólar e libra com cotação de referência
+- [x] Prêmio da Plura e história ALPHA Web Summit aos 22 anos
+- [x] Painéis cliente/admin: login, chamados, aceite, atualizações e mensagens (testados com contas temporárias)
+- [x] Calls por links Calendly/Google Meet, sem integração automática
+- [x] Site antigo e referências Apple consultados
+- [x] Dados empresariais, foto e biografia ao final
+- [x] Preços por hora US$50/US$100 em arquivo compartilhado
+- [x] Fundo branco sem plantas e botões preto/branco
+- [x] Slides horizontais em resultados, ferramentas, simulador da home, projetos e cases
+- [x] Seletor PT/EN/ES com dicionários locais
+- [ ] Completar DE/FR e revisar cobertura de textos dinâmicos — geração bloqueada por créditos de IA
+- [ ] Atribuir acesso administrativo real — aguarda conta verificada do proprietário
+- [x] Empresas atendidas após a abertura, em slides com imagens cinza quase preto
+- [x] Verificar tela em branco — não reproduzida em sessão nova; carregamento sem erros

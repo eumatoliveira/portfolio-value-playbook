@@ -1,0 +1,14 @@
+import { useTranslation } from "@/components/LanguageProvider";
+import { Reveal } from "./Motion";
+import award from "@/assets/plura-premio-insper.jpg.asset.json";
+import summit from "@/assets/plura-websummit.jpg.asset.json";
+
+export function SocialProof() {
+ const { t } = useTranslation();
+
+  return <>
+    <section className="mx-auto max-w-6xl px-5 pb-24"><Reveal><p className="eyebrow">{t("Meu trabalho em prática")}</p><h2 className="mt-3 font-display text-3xl font-semibold">{t("IA, React e motion — por Matheus Mansilla")}</h2><div className="mt-8 aspect-video overflow-hidden rounded-lg border border-border"><iframe src="https://www.youtube-nocookie.com/embed/blauj-A0zus" title="Matheus Mansilla — React, IA e animações" loading="lazy" className="h-full w-full" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen /></div><a href="https://www.youtube.com/watch?v=blauj-A0zus" target="_blank" rel="noreferrer" className="mt-4 inline-block text-accent">{t("Assistir no YouTube ↗")}</a></Reveal></section>
+    <section className="mx-auto max-w-6xl space-y-16 px-5 pb-24"><Reveal className="grid items-center gap-10 md:grid-cols-2"><img src={summit.url} alt="PluraTalks no programa ALPHA do Web Summit Rio" className="aspect-[4/3] w-full rounded-lg object-cover" loading="lazy"/><div><p className="eyebrow">{t("PluraTalks · Web Summit Rio 2026")}</p><h2 className="mt-3 font-display text-3xl font-semibold">{t("De um sonho de infância ao Web Summit, aos 22 anos")}</h2><p className="mt-5 text-muted-foreground">{t("Quando eu era criança, via o Web Summit e imaginava como seria fazer parte daquele encontro de pessoas construindo o futuro. Aos 22 anos, esse sonho ganhou nome: PluraTalks. Fomos selecionados para o programa ALPHA do Web Summit Rio 2026, levando nossa visão de uma nova camada de suporte emocional no Brasil.")}</p><p className="mt-4 text-muted-foreground">{t("Mais do que estar em um evento, foi um marco de uma jornada construída com propósito, tecnologia e a vontade de criar impacto real na vida das pessoas.")}</p></div></Reveal>
+    <Reveal className="grid items-center gap-10 md:grid-cols-[1fr_1.4fr]"><img src={award.url} alt="Troféu da Insper Jr. recebido pela Plura" className="mx-auto max-h-[480px] w-full rounded-lg object-contain" loading="lazy"/><div><p className="eyebrow">{t("Reconhecimento · Impacto")}</p><h2 className="mt-3 font-display text-3xl font-semibold">{t("Uma startup de impacto, desde o começo")}</h2><p className="mt-5 text-muted-foreground">{t("A Plura recebeu um prêmio como startup de impacto através de um grupo da Insper JR que apoiou nosso projeto desde o início. Esse reconhecimento valoriza uma construção coletiva e reforça o propósito que nos move: usar tecnologia para acolher, conectar e fazer a diferença.")}</p></div></Reveal></section>
+  </>;
+}

@@ -1,6 +1,8 @@
+import { useTranslation } from "@/components/LanguageProvider";
 import { Area, AreaChart, Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { Reveal } from "./Motion";
 import { chartColors } from "@/lib/chart-colors";
+import { useReducedMotion } from "framer-motion";
 
 const response = [
   { name: "Antes", horas: 48 }, { name: "Mês 1", horas: 24 }, { name: "Mês 2", horas: 6 }, { name: "Hoje", horas: 0.25 },
@@ -11,11 +13,14 @@ const audience = [
 const tip = { contentStyle: { background: "var(--popover)", border: "1px solid var(--border)", borderRadius: 12, color: "var(--foreground)" } };
 
 export function ImpactCharts() {
+ const { t } = useTranslation();
+
+  const reduced = useReducedMotion();
   return (
     <section className="mx-auto grid max-w-6xl gap-5 px-5 pb-24 md:grid-cols-2">
       <Reveal className="liquid-glass p-6">
-        <h3 className="font-display text-lg font-semibold">Tempo de resposta (horas)</h3>
-        <p className="text-sm text-muted-foreground">Automação + IA no atendimento</p>
+        <h3 className="font-display text-lg font-semibold">{t("Tempo de resposta (horas)")}</h3>
+        <p className="text-sm text-muted-foreground">{t("Automação + IA no atendimento")}</p>
         <div className="mt-6 h-56">
           <ResponsiveContainer>
             <BarChart data={response}>
@@ -23,14 +28,14 @@ export function ImpactCharts() {
               <XAxis dataKey="name" stroke="#8a95b8" fontSize={12} />
               <YAxis stroke="#8a95b8" fontSize={12} />
               <Tooltip {...tip} cursor={{ fill: "var(--secondary)" }} />
-              <Bar dataKey="horas" fill={chartColors[0]} radius={[8, 8, 0, 0]} />
+              <Bar dataKey="horas" fill={chartColors[0]} radius={[8, 8, 0, 0]} isAnimationActive={!reduced} />
             </BarChart>
           </ResponsiveContainer>
         </div>
       </Reveal>
       <Reveal delay={0.1} className="liquid-glass p-6">
-        <h3 className="font-display text-lg font-semibold">Seguidores no LinkedIn</h3>
-        <p className="text-sm text-muted-foreground">+18% no trimestre</p>
+        <h3 className="font-display text-lg font-semibold">{t("Seguidores no LinkedIn")}</h3>
+        <p className="text-sm text-muted-foreground">{t("+18% no trimestre")}</p>
         <div className="mt-6 h-56">
           <ResponsiveContainer>
             <AreaChart data={audience}>
@@ -44,7 +49,7 @@ export function ImpactCharts() {
               <XAxis dataKey="m" stroke="#8a95b8" fontSize={12} />
               <YAxis stroke="#8a95b8" fontSize={12} domain={[6000, 7600]} />
               <Tooltip {...tip} />
-              <Area dataKey="v" name="Seguidores" stroke={chartColors[1]} strokeWidth={2} fill="url(#g)" />
+              <Area dataKey="v" name="Seguidores" stroke={chartColors[1]} strokeWidth={2} fill="url(#g)" isAnimationActive={!reduced} />
             </AreaChart>
           </ResponsiveContainer>
         </div>

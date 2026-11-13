@@ -50,7 +50,7 @@ export const experience = [
 ];
 
 export const projects = [
-  { title: "PluraTalks", tag: "Healthtech · IA", text: "Co-fundador de uma startup de saúde com IA. Oferta de investimento de venture capital, participação em Google for Startups, Microsoft Reactor, ecossistema AWS e Web Summit Rio.", points: ["Oferta de VC", "US$10 mil em créditos AWS", "Web Summit Rio 2026"] },
+  { title: "PluraTalks", tag: "Healthtech · IA", text: "Co-fundador de uma startup de saúde com IA. Selecionada para o programa ALPHA do Web Summit Rio 2026 e premiada como startup de impacto através de um grupo da Insper JR que apoiou o projeto desde o início.", points: ["Oferta de VC", "US$10 mil em créditos AWS", "ALPHA · Web Summit Rio 2026", "Startup de impacto · Insper JR"] },
   { title: "GLX Control Tower", tag: "Plataforma · APIs", text: "Integrações via API e marketplace interno de aplicações, com automação de fluxos operacionais e soluções de IA generativa.", points: ["RAG & GenAI", "REST APIs", "Automação de processos"] },
   { title: "Governança de Portfólio", tag: "Estratégia · PMO", text: "Estruturação de governança, KPIs e reporte executivo para apoiar decisões de investimento e expansão internacional na Dolarizando-se.", points: ["Business cases", "KPIs executivos", "Lessons learned"] },
   { title: "Avaliação de LLMs", tag: "AI Quality · Governance", text: "Critérios de avaliação, análise de falhas e padrões de qualidade para modelos de linguagem em contexto internacional, alinhado à ISO/IEC 42001.", points: ["RLHF", "Prompt engineering", "AI Safety"] },

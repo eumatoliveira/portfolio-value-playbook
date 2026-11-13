@@ -1,0 +1,5 @@
+import { z } from "zod";
+export const requestSchema = z.object({ title: z.string().trim().min(3).max(160), description: z.string().trim().min(3).max(5000), kind: z.enum(["helpdesk","service"]), priority: z.enum(["low","normal","high"]) });
+export const callSchema = z.object({ request_id: z.string().uuid(), scheduled_at: z.string().datetime(), url: z.string().url().max(500).refine(v => { const u = new URL(v); return u.protocol === "https:" && ["calendly.com","meet.google.com"].includes(u.hostname); }, "Use um link do Calendly ou Google Meet") });
+export const editSchema = z.object({ id: z.string().uuid(), status: z.enum(["pending","accepted","in_progress","waiting","resolved","declined"]), progress: z.number().int().min(0).max(100) });
+export const messageSchema = z.object({ request_id: z.string().uuid(), body: z.string().trim().min(1).max(5000), kind: z.enum(["message","update"]) });
