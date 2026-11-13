@@ -2,12 +2,15 @@ import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import { Menu, X } from "lucide-react";
 import { profile } from "@/data/profile";
+import { motion } from "framer-motion";
 
 const nav = [
   { to: "/", label: "Início" },
   { to: "/sobre", label: "Sobre" },
   { to: "/experiencia", label: "Experiência" },
+  { to: "/cases", label: "Cases" },
   { to: "/projetos", label: "Projetos" },
+  { to: "/simulador", label: "Simulador" },
   { to: "/contato", label: "Contato" },
 ] as const;
 
@@ -38,7 +41,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
           </nav>
         )}
       </header>
-      <main className="relative pt-16">{children}</main>
+      <motion.main initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="relative pt-16">{children}</motion.main>
       <footer className="relative border-t border-border/60 py-10">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-5 text-sm text-muted-foreground md:flex-row">
           <p>© 2026 {profile.name}</p>

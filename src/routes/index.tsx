@@ -3,6 +3,8 @@ import { ArrowRight, Mail } from "lucide-react";
 import hero from "@/assets/hero-waves.jpg";
 import portrait from "@/assets/matheus-portrait.jpeg.asset.json";
 import { SiteShell } from "@/components/SiteShell";
+import { Tools } from "@/components/Tools";
+import { ImpactCharts } from "@/components/ImpactChart";
 import { audience, impact, profile } from "@/data/profile";
 
 export const Route = createFileRoute("/")({
@@ -34,7 +36,7 @@ function Index() {
               Sou {profile.name}, Technical Program Manager e AI Solutions Architect. Conecto engenharia, produto, dados e liderança executiva para entregar resultados mensuráveis.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
-              <Link to="/projetos" className="btn-glow">Ver projetos <ArrowRight className="size-4" /></Link>
+              <Link to="/simulador" className="btn-glow">Simular projeto <ArrowRight className="size-4" /></Link>
               <a href={`mailto:${profile.email}`} className="btn-ghost"><Mail className="size-4" /> Fale comigo</a>
             </div>
           </div>
@@ -59,6 +61,8 @@ function Index() {
         </div>
       </section>
 
+      <ImpactCharts />
+      <Tools />
       <section className="mx-auto max-w-6xl px-5 pb-24">
         <div className="glass-card grid gap-10 p-10 md:grid-cols-[1fr_2fr]">
           <div>
