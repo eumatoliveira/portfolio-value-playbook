@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader, SiteShell } from "@/components/SiteShell";
 import { projects } from "@/data/profile";
+import { CardSlides } from "@/components/CardSlides";
 
 export const Route = createFileRoute("/projetos")({
   head: () => ({
@@ -18,7 +19,7 @@ function Projetos() {
   return (
     <SiteShell>
       <PageHeader eyebrow="Projetos" title={<>Iniciativas em <span className="text-gradient">destaque</span></>} text="Venture building, plataformas de IA e governança." />
-      <section className="mx-auto grid max-w-6xl gap-6 px-5 pb-24 md:grid-cols-2">
+      <section className="mx-auto max-w-6xl px-5 pb-24"><CardSlides>
         {projects.map((p) => (
           <article key={p.title} className="glass-card group p-8">
             <span className="chip">{p.tag}</span>
@@ -29,7 +30,7 @@ function Projetos() {
             </ul>
           </article>
         ))}
-      </section>
+      </CardSlides></section>
     </SiteShell>
   );
 }

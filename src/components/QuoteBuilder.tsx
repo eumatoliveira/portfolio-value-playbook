@@ -5,6 +5,7 @@ import { Reveal, Stagger, StaggerItem } from "./Motion";
 import { ArrowRight, Check } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { brl, computeQuote, services } from "@/lib/quote";
+import { CardSlides } from "./CardSlides";
 
 const DEFAULT_IDS = ["discovery", "genai", "automation"];
 
@@ -36,7 +37,7 @@ export function QuoteBuilder() {
         Marque os serviços que fazem sentido para o seu momento. O total é atualizado na hora, com desconto por pacote.
       </p></Reveal>
 
-      <Stagger className="mt-10 grid gap-3 sm:grid-cols-2">
+      <CardSlides>
         {services.map((s) => {
           const on = ids.includes(s.id);
           return (
@@ -64,7 +65,7 @@ export function QuoteBuilder() {
             </StaggerItem>
           );
         })}
-      </Stagger>
+      </CardSlides>
 
       <Reveal className="liquid-glass mt-6 flex flex-wrap items-end justify-between gap-6 p-7">
         <div>

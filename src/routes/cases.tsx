@@ -6,6 +6,7 @@ import gov from "@/assets/case-governance.jpg";
 import llm from "@/assets/case-llm.jpg";
 import { PageHeader, SiteShell } from "@/components/SiteShell";
 import { Reveal } from "@/components/Motion";
+import { CardSlides } from "@/components/CardSlides";
 
 export const Route = createFileRoute("/cases")({
   head: () => ({
@@ -30,9 +31,9 @@ function Cases() {
   return (
     <SiteShell>
       <PageHeader eyebrow="Cases" title={<>Cases de <span className="text-gradient">sucesso</span></>} text="Problema, solução e resultado — em projetos reais." />
-      <section className="mx-auto max-w-6xl space-y-16 px-5 pb-24">
+      <section className="mx-auto max-w-6xl px-5 pb-24"><CardSlides>
         {cases.map((c, i) => (
-          <Reveal key={c.title} className={`grid items-center gap-8 md:grid-cols-2 ${i % 2 ? "md:[&>*:first-child]:order-2" : ""}`}>
+          <Reveal key={c.title} className="space-y-5">
             <motion.div whileHover={{ scale: 1.02 }} className="overflow-hidden rounded-3xl border border-border">
               <img src={c.img} alt={c.title} width={1280} height={800} loading="lazy" className="aspect-[16/10] w-full object-cover" />
             </motion.div>
@@ -52,7 +53,7 @@ function Cases() {
             </div>
           </Reveal>
         ))}
-      </section>
+      </CardSlides></section>
     </SiteShell>
   );
 }

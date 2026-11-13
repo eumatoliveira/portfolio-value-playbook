@@ -44,6 +44,8 @@
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
+  --color-action: var(--action);
+  --color-action-foreground: var(--action-foreground);
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
@@ -81,6 +83,8 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.24 0.008 250);
   --primary: oklch(0.53 0.19 255);
+  --action: oklch(0.18 0 0);
+  --action-foreground: oklch(1 0 0);
   --primary-foreground: oklch(0.99 0 0);
   --secondary: oklch(0.93 0.01 250);
   --secondary-foreground: oklch(0.24 0.008 250);
@@ -130,7 +134,7 @@
 @utility chip { display: inline-block; border-radius: 999px; padding: .3rem .85rem; font-size: .8rem; border: 1px solid var(--border); background: var(--secondary); }
 @utility btn-glow {
   display: inline-flex; align-items: center; gap: .5rem; border-radius: 999px; padding: .65rem 1.25rem; font-weight: 500; font-size: .875rem;
-  background: var(--primary); color: var(--primary-foreground); border: 1px solid var(--primary);
+  background: var(--action); color: var(--action-foreground); border: 1px solid var(--action);
   transition: transform .25s ease, border-color .25s ease, background-color .25s ease;
   &:hover { transform: translateY(-2px); border-color: var(--accent); opacity: .9; }
   &:active { transform: translateY(0); }
