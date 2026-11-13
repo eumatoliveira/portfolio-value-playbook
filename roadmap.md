@@ -4,3 +4,9 @@
 - [x] Cases de sucesso com imagens geradas
 - [x] Seção de sistemas/ferramentas que uso
 - [x] Animações (framer-motion), efeito liquid glass, gráficos
+- [ ] Fade e deslocamento nas seções da home, cards escalonados e botões suaves com movimento reduzido
+- [ ] Vídeo do YouTube como prova social na home
+- [ ] Exibir resultados financeiros em dólar (aguarda taxa de conversão)
+- [ ] Reconhecimento da Plura por startup de impacto com apoio de grupo da Insper JR
+- [ ] Área de clientes e administrador: login, chamados, serviços, atualizações e mensagens
+- [ ] Agendamento de suporte por Calendly ou Google Meet
