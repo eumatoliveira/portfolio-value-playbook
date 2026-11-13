@@ -1,9 +1,9 @@
 import { Reveal } from "./Motion";
 
 const tools = [
-  ["OpenAI", "openai"], ["AWS", "amazonwebservices"], ["Microsoft Azure", "microsoftazure"], ["Google Cloud", "googlecloud"],
+  ["Anthropic", "anthropic"], ["Gemini", "googlegemini"], ["Hugging Face", "huggingface"], ["Google Cloud", "googlecloud"],
   ["Python", "python"], ["TypeScript", "typescript"], ["React", "react"], ["Jira", "jira"],
-  ["Trello", "trello"], ["Notion", "notion"], ["Power BI", "powerbi"], ["GitHub", "github"],
+  ["Trello", "trello"], ["Notion", "notion"], ["Postman", "postman"], ["GitHub", "github"],
   ["n8n", "n8n"], ["Supabase", "supabase"], ["Docker", "docker"], ["Figma", "figma"],
 ] as const;
 
