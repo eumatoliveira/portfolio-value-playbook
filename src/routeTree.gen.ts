@@ -10,14 +10,21 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CasesRouteImport } from './routes/cases'
 import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as ExperienciaRouteImport } from './routes/experiencia'
 import { Route as ProjetosRouteImport } from './routes/projetos'
+import { Route as SimuladorRouteImport } from './routes/simulador'
 import { Route as SobreRouteImport } from './routes/sobre'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CasesRoute = CasesRouteImport.update({
+  id: '/cases',
+  path: '/cases',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContatoRoute = ContatoRouteImport.update({
@@ -35,6 +42,11 @@ const ProjetosRoute = ProjetosRouteImport.update({
   path: '/projetos',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SimuladorRoute = SimuladorRouteImport.update({
+  id: '/simulador',
+  path: '/simulador',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SobreRoute = SobreRouteImport.update({
   id: '/sobre',
   path: '/sobre',
@@ -43,39 +55,69 @@ const SobreRoute = SobreRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/cases': typeof CasesRoute
   '/contato': typeof ContatoRoute
   '/experiencia': typeof ExperienciaRoute
   '/projetos': typeof ProjetosRoute
+  '/simulador': typeof SimuladorRoute
   '/sobre': typeof SobreRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/cases': typeof CasesRoute
   '/contato': typeof ContatoRoute
   '/experiencia': typeof ExperienciaRoute
   '/projetos': typeof ProjetosRoute
+  '/simulador': typeof SimuladorRoute
   '/sobre': typeof SobreRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/cases': typeof CasesRoute
   '/contato': typeof ContatoRoute
   '/experiencia': typeof ExperienciaRoute
   '/projetos': typeof ProjetosRoute
+  '/simulador': typeof SimuladorRoute
   '/sobre': typeof SobreRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/contato' | '/experiencia' | '/projetos' | '/sobre'
+  fullPaths:
+    | '/'
+    | '/cases'
+    | '/contato'
+    | '/experiencia'
+    | '/projetos'
+    | '/simulador'
+    | '/sobre'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/contato' | '/experiencia' | '/projetos' | '/sobre'
-  id: '__root__' | '/' | '/contato' | '/experiencia' | '/projetos' | '/sobre'
+  to:
+    | '/'
+    | '/cases'
+    | '/contato'
+    | '/experiencia'
+    | '/projetos'
+    | '/simulador'
+    | '/sobre'
+  id:
+    | '__root__'
+    | '/'
+    | '/cases'
+    | '/contato'
+    | '/experiencia'
+    | '/projetos'
+    | '/simulador'
+    | '/sobre'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CasesRoute: typeof CasesRoute
   ContatoRoute: typeof ContatoRoute
   ExperienciaRoute: typeof ExperienciaRoute
   ProjetosRoute: typeof ProjetosRoute
+  SimuladorRoute: typeof SimuladorRoute
   SobreRoute: typeof SobreRoute
 }
 
@@ -86,6 +128,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cases': {
+      id: '/cases'
+      path: '/cases'
+      fullPath: '/cases'
+      preLoaderRoute: typeof CasesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contato': {
@@ -109,6 +158,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjetosRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/simulador': {
+      id: '/simulador'
+      path: '/simulador'
+      fullPath: '/simulador'
+      preLoaderRoute: typeof SimuladorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sobre': {
       id: '/sobre'
       path: '/sobre'
@@ -121,9 +177,11 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CasesRoute: CasesRoute,
   ContatoRoute: ContatoRoute,
   ExperienciaRoute: ExperienciaRoute,
   ProjetosRoute: ProjetosRoute,
+  SimuladorRoute: SimuladorRoute,
   SobreRoute: SobreRoute,
 }
 export const routeTree = rootRouteImport
