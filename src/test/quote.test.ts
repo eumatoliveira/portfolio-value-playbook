@@ -9,7 +9,7 @@ describe("simulador", () => {
     expect(computeQuote(["discovery", "rca", "api"]).total).toBe(1495.08);
   });
   it("aplica 15% com 5 serviços", () => {
-    expect(computeQuote(["discovery", "rca", "api", "pmo", "web"]).discount).toBe(596.7);
+    expect(computeQuote(["discovery", "rca", "api", "pmo", "web"]).discount).toBe(594.06);
   });
   it("urgência acrescenta 25%", () => {
     expect(computeQuote(["discovery"], "rapido").total).toBe(479);

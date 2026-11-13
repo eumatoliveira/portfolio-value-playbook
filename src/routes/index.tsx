@@ -28,7 +28,7 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <SiteShell>
-      <section className="relative isolate overflow-hidden">
+      <section className="portfolio-hero relative isolate overflow-hidden">
         <img src={hero} alt="" width={1920} height={1088} className="absolute inset-0 -z-10 h-full w-full object-cover opacity-60" />
         <div className="absolute inset-0 -z-10 bg-hero-fade" />
         <div className="mx-auto max-w-6xl px-5 py-16 md:py-24">
