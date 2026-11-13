@@ -47,7 +47,7 @@ function Simulador() {
                       <div className="flex-1">
                         <p className="font-semibold">{s.label}</p>
                         <p className="mt-1 text-sm text-muted-foreground">{s.detail}</p>
-                        <p className="mt-3 text-sm text-accent">{brl(s.price)} · {s.weeks} sem.</p>
+                        <p className="mt-3 text-sm text-accent">{brl(s.price)}/hora · {s.hours} h estimadas</p>
                       </div>
                     </motion.div>
                   );
@@ -74,7 +74,7 @@ function Simulador() {
               {brl(q.total)}
             </motion.p>
           </AnimatePresence>
-          <p className="text-muted-foreground">em cerca de {q.weeks} semanas</p>
+          <p className="text-muted-foreground">{q.hours} horas estimadas · cerca de {q.weeks} semanas</p>
           {q.chosen.length > 0 && (
             <div className="mt-4 h-40">
               <ResponsiveContainer>
@@ -96,7 +96,7 @@ function Simulador() {
             {urgency === "rapido" && <p className="flex justify-between"><span>Urgência</span><span>+25%</span></p>}
           </div>
           <a href={mail} className={`btn-glow mt-6 w-full justify-center ${q.chosen.length ? "" : "pointer-events-none opacity-50"}`}><Send className="size-4" /> Enviar proposta</a>
-          <p className="mt-3 text-xs text-muted-foreground">Valores estimados. A proposta final é ajustada após a conversa inicial.</p>
+          <p className="mt-3 text-xs text-muted-foreground">Cobrança por hora, sem mensalidade fixa. Valores de exemplo; horas e escopo definidos antes do início.</p>
         </aside>
       </section>
     </SiteShell>

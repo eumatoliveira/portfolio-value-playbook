@@ -31,24 +31,19 @@ function Index() {
       <section className="relative isolate overflow-hidden">
         <img src={hero} alt="" width={1920} height={1088} className="absolute inset-0 -z-10 h-full w-full object-cover opacity-60" />
         <div className="absolute inset-0 -z-10 bg-hero-fade" />
-        <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-14 md:grid-cols-[1.4fr_1fr] md:py-20">
+        <div className="mx-auto max-w-6xl px-5 py-16 md:py-24">
           <Reveal>
             <p className="eyebrow">AI • Program Management • Governance</p>
-            <h1 className="mt-5 font-display text-4xl font-light leading-[1.1] md:text-6xl">
+            <h1 className="mt-5 max-w-3xl font-display text-4xl font-semibold leading-[1.1] md:text-6xl">
               Turning <strong className="font-semibold">Technology Complexity</strong> Into{" "}
               <strong className="text-gradient font-semibold">Business Outcomes</strong>
             </h1>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-              Sou {profile.name}, Technical Program Manager e AI Solutions Architect. Conecto engenharia, produto, dados e liderança executiva para entregar resultados mensuráveis.
+              Consultoria em tecnologia, IA e desenvolvimento. Da ideia à entrega, com estratégia, clareza e resultados mensuráveis.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <Link to="/simulador" className="btn-glow">Simular projeto <ArrowRight className="size-4" /></Link>
               <a href={`mailto:${profile.email}`} className="btn-ghost"><Mail className="size-4" /> Fale comigo</a>
-            </div>
-          </Reveal>
-          <Reveal delay={0.1} className="relative mx-auto w-64 md:w-full md:max-w-sm">
-            <div className="portrait-ring">
-              <img src={portrait.url} alt={profile.name} className="aspect-square w-full rounded-full object-cover" />
             </div>
           </Reveal>
         </div>
@@ -77,6 +72,7 @@ function Index() {
           </Stagger>
         </Reveal>
       </section>
+      <section className="mx-auto max-w-6xl px-5 pb-24"><Reveal className="grid items-center gap-10 border-t border-border pt-16 md:grid-cols-[240px_1fr]"><img src={portrait.url} alt={profile.name} width={400} height={400} loading="lazy" className="mx-auto aspect-square w-60 rounded-full object-cover"/><div><p className="eyebrow">Quem está por trás</p><h2 className="mt-3 font-display text-3xl font-semibold">{profile.name}</h2><p className="mt-5 max-w-2xl text-muted-foreground">Technical Program Manager e AI Solutions Architect. Conecto engenharia, produto, dados e liderança executiva para entregar resultados mensuráveis. Minha trajetória reúne IA generativa, desenvolvimento de software, governança e a construção da PluraTalks.</p><Link to="/sobre" className="mt-5 inline-flex items-center gap-2 text-accent">Conheça minha trajetória <ArrowRight className="size-4"/></Link></div></Reveal></section>
     </SiteShell>
   );
 }

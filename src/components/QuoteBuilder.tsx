@@ -11,7 +11,7 @@ const DEFAULT_IDS = ["discovery", "genai", "automation"];
 function AnimatedBRL({ value }: { value: number }) {
   const reduced = useReducedMotion();
   const mv = useMotionValue(value);
-  const text = useTransform(mv, (v) => brl(Math.round(v)));
+  const text = useTransform(mv, (v) => brl(v));
   useEffect(() => {
     if (reduced) { mv.set(value); return; }
     const controls = animate(mv, value, { duration: 0.7, ease: [0.2, 0.7, 0.2, 1] });
@@ -59,7 +59,7 @@ export function QuoteBuilder() {
               <div className="flex-1">
                 <p className="font-semibold">{s.label}</p>
                 <p className="mt-1 text-sm text-muted-foreground">{s.detail}</p>
-                <p className="mt-3 text-sm text-accent">{brl(s.price)}</p>
+                <p className="mt-3 text-sm text-accent">{brl(s.price)}/hora · {s.hours} h estimadas</p>
               </div>
             </StaggerItem>
           );
@@ -73,7 +73,7 @@ export function QuoteBuilder() {
             <AnimatedBRL value={q.total} />
           </p>
           <p className="mt-2 text-sm text-muted-foreground">
-            {q.chosen.length} {q.chosen.length === 1 ? "serviço" : "serviços"} · cerca de {q.weeks} semanas
+            {q.chosen.length} {q.chosen.length === 1 ? "serviço" : "serviços"} · {q.hours} horas estimadas
           </p>
         </div>
         <div className="min-w-52 space-y-1 text-sm">
@@ -96,6 +96,7 @@ export function QuoteBuilder() {
           <p className="flex justify-between gap-6 border-t border-border pt-2 font-semibold"><span>Total</span><span>{brl(q.total)}</span></p>
         </div>
       </Reveal>
+      <p className="mt-4 text-sm text-muted-foreground">Cobrança por hora, sem mensalidade fixa. {q.discount > 0 ? `Economia de ${brl(q.discount)} com o pacote selecionado.` : "Escopo e horas combinados antes do início."}</p>
 
       <div className="mt-6 flex flex-wrap items-center gap-4">
         <Link to="/simulador" className="btn-glow">Simulador completo <ArrowRight className="size-4" /></Link>
