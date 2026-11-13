@@ -53,7 +53,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
       <motion.main initial={reduced ? false : { opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: reduced ? 0 : 0.3 }} className="relative pt-16">{children}</motion.main>
       <footer className="relative border-t border-border/60 py-10">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-5 text-sm text-muted-foreground md:flex-row">
-          <p>{t("© 2026")}{profile.name}</p>
+          <p>© 2026 Mansilla Consultoria de TI</p>
           <div className="flex flex-wrap gap-5">
             {profile.links.map((l) => (
               <a key={t(l.label)} href={l.href} target="_blank" rel="noreferrer" className="hover:text-accent">{t(l.label)}</a>
