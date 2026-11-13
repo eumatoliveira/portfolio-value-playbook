@@ -1,0 +1,21 @@
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { SiteShell } from "@/components/SiteShell";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { z } from "zod";
+export const Route = createFileRoute("/auth")({head:() => ({meta:[{title:"Área de clientes — Matheus Mansilla"},{name:"description",content:"Acesse seus serviços e atendimentos com Matheus Mansilla."},{property:"og:title",content:"Área de clientes — Matheus Mansilla"},{property:"og:description",content:"Chamados, projetos e suporte em um só lugar."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary"}]}),component:Auth});
+function Auth(){
+  const navigate = useNavigate(); const [mode,setMode] = useState<"login"|"signup"|"reset">("login"); const [email,setEmail] = useState(""); const [password,setPassword] = useState(""); const [name,setName] = useState(""); const [busy,setBusy] = useState(false); const [notice,setNotice] = useState("");
+  useEffect(() => { let active = true; void supabase.auth.getUser().then(({data}) => {if(active && data.user) void navigate({to:"/atendimento"});}); return () => {active=false;}; },[navigate]);
+  async function submit(e:React.FormEvent){e.preventDefault(); setBusy(true);setNotice("");try{
+    const address = z.string().email().max(254).parse(email.trim());
+    if(mode === "reset"){ const {error} = await supabase.auth.resetPasswordForEmail(address,{redirectTo:window.location.origin+"/reset-password"}); if(error) throw error; setNotice("Confira seu e-mail para redefinir a senha."); }
+    else {z.string().min(8).max(128).parse(password);
+      if(mode === "signup"){ const display_name=z.string().trim().min(2).max(100).parse(name); const {data,error}=await supabase.auth.signUp({email:address,password,options:{data:{display_name},emailRedirectTo:window.location.origin+"/auth"}});if(error)throw error;if(data.session)await navigate({to:"/atendimento"});else setNotice("Conta criada. Confirme seu e-mail antes de entrar."); }
+      else { const {error}=await supabase.auth.signInWithPassword({email:address,password});if(error)throw error; await navigate({to:"/atendimento"}); }
+    }
+  }catch(error){setNotice(error instanceof z.ZodError ? "Confira os campos. A senha precisa ter pelo menos 8 caracteres." : error instanceof Error ? error.message : "Não foi possível entrar.");}finally{setBusy(false);}}
+  return <SiteShell><section className="mx-auto max-w-md px-5 py-24"><p className="eyebrow">Atendimento</p><h1 className="mt-3 font-display text-3xl font-semibold">{mode === "signup" ? "Criar conta" : mode === "reset" ? "Recuperar senha" : "Área de clientes"}</h1><form onSubmit={submit} className="mt-8 space-y-5">{mode === "signup" && <label className="block text-sm">Nome<Input value={name} onChange={e=>setName(e.target.value)} autoComplete="name" required maxLength={100} className="mt-2"/></label>}<label className="block text-sm">E-mail<Input type="email" autoComplete="email" value={email} onChange={e=>setEmail(e.target.value)} required maxLength={254} className="mt-2"/></label>{mode !== "reset" && <label className="block text-sm">Senha<Input type="password" autoComplete={mode === "signup" ? "new-password":"current-password"} value={password} onChange={e=>setPassword(e.target.value)} minLength={8} maxLength={128} required className="mt-2"/></label>}<Button className="w-full" disabled={busy}>{busy ? "Aguarde…":mode === "signup" ? "Criar conta": mode === "reset" ? "Enviar link":"Entrar"}</Button>{notice && <p role="status" className="text-sm text-accent">{notice}</p>}</form><div className="mt-4 flex flex-wrap gap-2"><Button variant="ghost" onClick={()=>{setMode(mode === "signup" ? "login":"signup");setNotice("");}}>{mode === "signup" ? "Já tenho conta":"Criar conta"}</Button><Button variant="link" onClick={()=>{setMode("reset");setNotice("");}}>Esqueci minha senha</Button></div><Link to="/" className="mt-6 inline-block text-sm text-muted-foreground">Voltar ao portfólio</Link></section></SiteShell>;
+}
