@@ -18,5 +18,5 @@
 - [x] Seletor PT/EN/ES com dicionários locais
 - [ ] Completar DE/FR e revisar cobertura de textos dinâmicos — geração bloqueada por créditos de IA
 - [ ] Atribuir acesso administrativo real — aguarda conta verificada do proprietário
-- [ ] Empresas atendidas após a abertura, em slides com imagens cinza quase preto
+- [x] Empresas atendidas após a abertura, em slides com imagens cinza quase preto
 - [x] Verificar tela em branco — não reproduzida em sessão nova; carregamento sem erros
