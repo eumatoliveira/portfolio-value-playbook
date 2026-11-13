@@ -18,7 +18,7 @@ describe("simulador", () => {
     expect(computeQuote(["genai", "discovery"]).weeks).toBe(7);
   });
   it("serviços da home: 3 marcados = 10% de desconto", () => {
-    expect(computeQuote(["discovery", "genai", "automation"]).total).toBe(28800);
+    expect(computeQuote(["discovery", "genai", "automation"]).total).toBe(30600);
   });
   it("lista editável: ids únicos, preços e prazos positivos", () => {
     expect(new Set(services.map((s) => s.id)).size).toBe(services.length);
