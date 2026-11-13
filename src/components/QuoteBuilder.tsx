@@ -1,3 +1,4 @@
+import { useTranslation } from "@/components/LanguageProvider";
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { AnimatePresence, animate, motion, useMotionValue, useTransform, useReducedMotion } from "framer-motion";
@@ -10,6 +11,8 @@ import { CardSlides } from "./CardSlides";
 const DEFAULT_IDS = ["discovery", "genai", "automation"];
 
 function AnimatedBRL({ value }: { value: number }) {
+ const { t } = useTranslation();
+
   const reduced = useReducedMotion();
   const mv = useMotionValue(value);
   const text = useTransform(mv, (v) => brl(v));
@@ -22,6 +25,8 @@ function AnimatedBRL({ value }: { value: number }) {
 }
 
 export function QuoteBuilder() {
+ const { t } = useTranslation();
+
   const reduced = useReducedMotion();
   const [ids, setIds] = useState<string[]>(DEFAULT_IDS);
   const q = computeQuote(ids);
@@ -29,13 +34,12 @@ export function QuoteBuilder() {
 
   return (
     <section id="simule" className="mx-auto max-w-6xl px-5 py-20">
-      <Reveal><p className="eyebrow">Simulador</p>
+      <Reveal><p className="eyebrow">{t("Simulador")}</p>
       <h2 className="mt-3 font-display text-3xl font-semibold md:text-4xl">
-        Simule seu projeto <span className="text-gradient">comigo</span>
+        {t("Simule seu projeto")}<span className="text-gradient">{t("comigo")}</span>
       </h2>
       <p className="mt-4 max-w-2xl text-muted-foreground">
-        Marque os serviços que fazem sentido para o seu momento. O total é atualizado na hora, com desconto por pacote.
-      </p></Reveal>
+        {t("Marque os serviços que fazem sentido para o seu momento. O total é atualizado na hora, com desconto por pacote.")}</p></Reveal>
 
       <CardSlides>
         {services.map((s) => {
@@ -58,9 +62,9 @@ export function QuoteBuilder() {
             >
               <Checkbox checked={on} tabIndex={-1} className="pointer-events-none mt-1" />
               <div className="flex-1">
-                <p className="font-semibold">{s.label}</p>
-                <p className="mt-1 text-sm text-muted-foreground">{s.detail}</p>
-                <p className="mt-3 text-sm text-accent">{brl(s.price)}/hora · {s.hours} h estimadas</p>
+                <p className="font-semibold">{t(s.label)}</p>
+                <p className="mt-1 text-sm text-muted-foreground">{t(s.detail)}</p>
+                <p className="mt-3 text-sm text-accent">{brl(s.price)}{t("/hora ·")}{s.hours} {t("h estimadas")}</p>
               </div>
             </StaggerItem>
           );
@@ -69,16 +73,15 @@ export function QuoteBuilder() {
 
       <Reveal className="liquid-glass mt-6 flex flex-wrap items-end justify-between gap-6 p-7">
         <div>
-          <p className="eyebrow">Total estimado</p>
+          <p className="eyebrow">{t("Total estimado")}</p>
           <p className="mt-2 font-display text-5xl font-semibold text-gradient">
             <AnimatedBRL value={q.total} />
           </p>
           <p className="mt-2 text-sm text-muted-foreground">
-            {q.chosen.length} {q.chosen.length === 1 ? "serviço" : "serviços"} · {q.hours} horas estimadas
-          </p>
+            {q.chosen.length} {q.chosen.length === 1 ? "serviço" : "serviços"} {t("·")}{q.hours} {t("horas estimadas")}</p>
         </div>
         <div className="min-w-52 space-y-1 text-sm">
-          <p className="flex justify-between gap-6"><span className="text-muted-foreground">Subtotal</span><span>{brl(q.subtotal)}</span></p>
+          <p className="flex justify-between gap-6"><span className="text-muted-foreground">{t("Subtotal")}</span><span>{brl(q.subtotal)}</span></p>
           <AnimatePresence mode="popLayout">
             {q.discount > 0 && (
               <motion.p
@@ -89,21 +92,20 @@ export function QuoteBuilder() {
                 transition={{ duration: reduced ? 0 : 0.2 }}
                 className="flex justify-between gap-6 text-accent"
               >
-                <span>Desconto pacote ({q.rate * 100}%)</span>
-                <span>−{brl(q.discount)}</span>
+                <span>{t("Desconto pacote (")}{q.rate * 100}{t("%)")}</span>
+                <span>{t("−")}{brl(q.discount)}</span>
               </motion.p>
             )}
           </AnimatePresence>
-          <p className="flex justify-between gap-6 border-t border-border pt-2 font-semibold"><span>Total</span><span>{brl(q.total)}</span></p>
+          <p className="flex justify-between gap-6 border-t border-border pt-2 font-semibold"><span>{t("Total")}</span><span>{brl(q.total)}</span></p>
         </div>
       </Reveal>
-      <p className="mt-4 text-sm text-muted-foreground">Cobrança por hora, sem mensalidade fixa. {q.discount > 0 ? `Economia de ${brl(q.discount)} com o pacote selecionado.` : "Escopo e horas combinados antes do início."}</p>
+      <p className="mt-4 text-sm text-muted-foreground">{t("Cobrança por hora, sem mensalidade fixa.")}{q.discount > 0 ? `Economia de ${brl(q.discount)} com o pacote selecionado.` : "Escopo e horas combinados antes do início."}</p>
 
       <div className="mt-6 flex flex-wrap items-center gap-4">
-        <Link to="/simulador" className="btn-glow">Simulador completo <ArrowRight className="size-4" /></Link>
+        <Link to="/simulador" className="btn-glow">{t("Simulador completo")}<ArrowRight className="size-4" /></Link>
         <span className="inline-flex items-center gap-2 text-sm text-muted-foreground">
-          <Check className="size-4 text-accent" /> Valores de exemplo, editáveis em src/lib/quote.ts
-        </span>
+          <Check className="size-4 text-accent" /> {t("Valores de exemplo, editáveis em src/lib/quote.ts")}</span>
       </div>
     </section>
   );

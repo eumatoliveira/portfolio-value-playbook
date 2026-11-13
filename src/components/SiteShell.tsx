@@ -1,3 +1,4 @@
+import { useTranslation } from "@/components/LanguageProvider";
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState, type ReactNode } from "react";
 import { Menu, X } from "lucide-react";
@@ -19,6 +20,8 @@ const nav = [
 ] as const;
 
 export function SiteShell({ children }: { children: ReactNode }) {
+ const { t } = useTranslation();
+
   const [open, setOpen] = useState(false);
   const [signedIn, setSignedIn] = useState(false);
   const reduced = useReducedMotion();
@@ -28,12 +31,12 @@ export function SiteShell({ children }: { children: ReactNode }) {
       <header className="fixed inset-x-0 top-0 z-50 border-b border-border/60 bg-background/70 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
           <Link to="/" className="font-display text-lg font-semibold tracking-tight">
-            Matheus<span className="text-gradient">.ai</span>
+            {t("Matheus")}<span className="text-gradient">{t(".ai")}</span>
           </Link>
           <nav className="hidden gap-1 lg:flex">
             {nav.map((n) => (
               <Link key={n.to} to={n.to} activeOptions={{ exact: true }} className="rounded-full px-3 py-2 text-sm text-muted-foreground transition hover:text-foreground" activeProps={{ className: "bg-secondary text-foreground" }}>
-                {n.label}
+                {t(n.label)}
               </Link>
             ))}
           </nav>
@@ -42,7 +45,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
         {open && (
           <nav className="flex flex-col border-t border-border/60 px-5 py-3 lg:hidden">
             {nav.map((n) => (
-              <Link key={n.to} to={n.to} onClick={() => setOpen(false)} className="py-2 text-muted-foreground">{n.label}</Link>
+              <Link key={n.to} to={n.to} onClick={() => setOpen(false)} className="py-2 text-muted-foreground">{t(n.label)}</Link>
             ))}
           </nav>
         )}
@@ -50,20 +53,22 @@ export function SiteShell({ children }: { children: ReactNode }) {
       <motion.main initial={reduced ? false : { opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: reduced ? 0 : 0.3 }} className="relative pt-16">{children}</motion.main>
       <footer className="relative border-t border-border/60 py-10">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-5 text-sm text-muted-foreground md:flex-row">
-          <p>© 2026 {profile.name}</p>
+          <p>{t("© 2026")}{profile.name}</p>
           <div className="flex flex-wrap gap-5">
             {profile.links.map((l) => (
-              <a key={l.label} href={l.href} target="_blank" rel="noreferrer" className="hover:text-accent">{l.label}</a>
+              <a key={t(l.label)} href={l.href} target="_blank" rel="noreferrer" className="hover:text-accent">{t(l.label)}</a>
             ))}
           </div>
         </div>
-        <div className="mx-auto mt-6 max-w-6xl border-t border-border pt-5 px-5 text-xs text-muted-foreground"><p>{company.tradeName} · {company.legalName}</p><p className="mt-2">CNPJ {company.cnpj} · {company.location}</p></div>
+        <div className="mx-auto mt-6 max-w-6xl border-t border-border pt-5 px-5 text-xs text-muted-foreground"><p>{company.tradeName} {t("·")}{company.legalName}</p><p className="mt-2">{t("CNPJ")}{company.cnpj} {t("·")}{company.location}</p></div>
       </footer>
     </div>
   );
 }
 
 export function PageHeader({ eyebrow, title, text }: { eyebrow: string; title: ReactNode; text?: string }) {
+ const { t } = useTranslation();
+
   return (
     <section className="mx-auto max-w-6xl px-5 pb-10 pt-20 fade-up">
       <p className="eyebrow">{eyebrow}</p>

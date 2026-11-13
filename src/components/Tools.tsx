@@ -1,3 +1,4 @@
+import { useTranslation } from "@/components/LanguageProvider";
 import { Reveal, Stagger, StaggerItem } from "./Motion";
 import { CardSlides } from "./CardSlides";
 
@@ -9,11 +10,13 @@ const tools = [
 ] as const;
 
 export function Tools() {
+ const { t } = useTranslation();
+
   return (
     <section className="mx-auto max-w-6xl px-5 pb-24">
       <Reveal>
-        <p className="eyebrow">Stack</p>
-        <h2 className="mt-3 font-display text-3xl font-semibold md:text-4xl">Sistemas e ferramentas que uso</h2>
+        <p className="eyebrow">{t("Stack")}</p>
+        <h2 className="mt-3 font-display text-3xl font-semibold md:text-4xl">{t("Sistemas e ferramentas que uso")}</h2>
       </Reveal>
       <CardSlides compact>
         {tools.map(([name, slug]) => (

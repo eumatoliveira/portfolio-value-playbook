@@ -1,3 +1,4 @@
+import { useTranslation } from "@/components/LanguageProvider";
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -24,6 +25,8 @@ import { chartColors as colors } from "@/lib/chart-colors";
 const groups = [...new Set(services.map((s) => s.group))];
 
 function Simulador() {
+ const { t } = useTranslation();
+
   const [ids, setIds] = useState<string[]>(["discovery", "genai"]);
   const [urgency, setUrgency] = useState<Urgency>("normal");
   const q = useMemo(() => computeQuote(ids, urgency), [ids, urgency]);
@@ -32,7 +35,7 @@ function Simulador() {
 
   return (
     <SiteShell>
-      <PageHeader eyebrow="Simulador" title={<>Monte seu <span className="text-gradient">projeto</span></>} text="Marque o que você precisa. O cálculo considera desconto por pacote, prazo com entregas em paralelo e urgência." />
+      <PageHeader eyebrow="Simulador" title={<>{t("Monte seu")}<span className="text-gradient">{t("projeto")}</span></>} text="Marque o que você precisa. O cálculo considera desconto por pacote, prazo com entregas em paralelo e urgência." />
       <section className="mx-auto grid max-w-6xl gap-8 px-5 pb-24 lg:grid-cols-[1.5fr_1fr]">
         <div className="space-y-8">
           {groups.map((g) => (
@@ -45,9 +48,9 @@ function Simulador() {
                     <motion.div role="checkbox" aria-checked={on} tabIndex={0} onClick={() => toggle(s.id)} onKeyDown={(e) => (e.key === " " || e.key === "Enter") && (e.preventDefault(), toggle(s.id))} key={s.id} whileTap={{ scale: 0.98 }} className={`liquid-glass flex cursor-pointer gap-3 p-5 ${on ? "is-active" : ""}`}>
                       <Checkbox checked={on} tabIndex={-1} className="pointer-events-none mt-1" />
                       <div className="flex-1">
-                        <p className="font-semibold">{s.label}</p>
-                        <p className="mt-1 text-sm text-muted-foreground">{s.detail}</p>
-                        <p className="mt-3 text-sm text-accent">{brl(s.price)}/hora · {s.hours} h estimadas</p>
+                        <p className="font-semibold">{t(s.label)}</p>
+                        <p className="mt-1 text-sm text-muted-foreground">{t(s.detail)}</p>
+                        <p className="mt-3 text-sm text-accent">{brl(s.price)}{t("/hora ·")}{s.hours} {t("h estimadas")}</p>
                       </div>
                     </motion.div>
                   );
@@ -56,7 +59,7 @@ function Simulador() {
             </div>
           ))}
           <div>
-            <h2 className="eyebrow mb-3">Prazo</h2>
+            <h2 className="eyebrow mb-3">{t("Prazo")}</h2>
             <div className="flex gap-3">
               {(["normal", "rapido"] as const).map((u) => (
                 <button key={u} onClick={() => setUrgency(u)} className={`liquid-glass px-5 py-3 text-sm ${urgency === u ? "is-active" : ""}`}>
@@ -68,13 +71,13 @@ function Simulador() {
         </div>
 
         <aside className="liquid-glass h-fit p-7 lg:sticky lg:top-24">
-          <p className="eyebrow">Sua estimativa</p>
+          <p className="eyebrow">{t("Sua estimativa")}</p>
           <AnimatePresence mode="popLayout">
             <motion.p key={q.total} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="mt-3 font-display text-4xl font-semibold text-gradient">
               {brl(q.total)}
             </motion.p>
           </AnimatePresence>
-          <p className="text-muted-foreground">{q.hours} horas estimadas · cerca de {q.weeks} semanas</p>
+          <p className="text-muted-foreground">{q.hours} {t("horas estimadas · cerca de")}{q.weeks} {t("semanas")}</p>
           {q.chosen.length > 0 && (
             <div className="mt-4 h-40">
               <ResponsiveContainer>
@@ -88,15 +91,15 @@ function Simulador() {
             </div>
           )}
           <ul className="mt-4 space-y-2 text-sm">
-            {q.chosen.map((s) => <li key={s.id} className="flex justify-between gap-3"><span className="flex gap-2"><Check className="size-4 text-accent" />{s.label}</span><span>{brl(s.price)}</span></li>)}
+            {q.chosen.map((s) => <li key={s.id} className="flex justify-between gap-3"><span className="flex gap-2"><Check className="size-4 text-accent" />{t(s.label)}</span><span>{brl(s.price)}</span></li>)}
           </ul>
           <div className="mt-5 space-y-1 border-t border-border pt-4 text-sm">
-            <p className="flex justify-between"><span>Subtotal</span><span>{brl(q.subtotal)}</span></p>
-            {q.discount > 0 && <p className="flex justify-between text-accent"><span>Desconto pacote ({q.rate * 100}%)</span><span>−{brl(q.discount)}</span></p>}
-            {urgency === "rapido" && <p className="flex justify-between"><span>Urgência</span><span>+25%</span></p>}
+            <p className="flex justify-between"><span>{t("Subtotal")}</span><span>{brl(q.subtotal)}</span></p>
+            {q.discount > 0 && <p className="flex justify-between text-accent"><span>{t("Desconto pacote (")}{q.rate * 100}{t("%)")}</span><span>{t("−")}{brl(q.discount)}</span></p>}
+            {urgency === "rapido" && <p className="flex justify-between"><span>{t("Urgência")}</span><span>{t("+25%")}</span></p>}
           </div>
-          <a href={mail} className={`btn-glow mt-6 w-full justify-center ${q.chosen.length ? "" : "pointer-events-none opacity-50"}`}><Send className="size-4" /> Enviar proposta</a>
-          <p className="mt-3 text-xs text-muted-foreground">Cobrança por hora, sem mensalidade fixa. Valores de exemplo; horas e escopo definidos antes do início.</p>
+          <a href={mail} className={`btn-glow mt-6 w-full justify-center ${q.chosen.length ? "" : "pointer-events-none opacity-50"}`}><Send className="size-4" /> {t("Enviar proposta")}</a>
+          <p className="mt-3 text-xs text-muted-foreground">{t("Cobrança por hora, sem mensalidade fixa. Valores de exemplo; horas e escopo definidos antes do início.")}</p>
         </aside>
       </section>
     </SiteShell>

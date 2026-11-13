@@ -1,3 +1,4 @@
+import { useTranslation } from "@/components/LanguageProvider";
 import { Area, AreaChart, Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { Reveal } from "./Motion";
 import { chartColors } from "@/lib/chart-colors";
@@ -12,12 +13,14 @@ const audience = [
 const tip = { contentStyle: { background: "var(--popover)", border: "1px solid var(--border)", borderRadius: 12, color: "var(--foreground)" } };
 
 export function ImpactCharts() {
+ const { t } = useTranslation();
+
   const reduced = useReducedMotion();
   return (
     <section className="mx-auto grid max-w-6xl gap-5 px-5 pb-24 md:grid-cols-2">
       <Reveal className="liquid-glass p-6">
-        <h3 className="font-display text-lg font-semibold">Tempo de resposta (horas)</h3>
-        <p className="text-sm text-muted-foreground">Automação + IA no atendimento</p>
+        <h3 className="font-display text-lg font-semibold">{t("Tempo de resposta (horas)")}</h3>
+        <p className="text-sm text-muted-foreground">{t("Automação + IA no atendimento")}</p>
         <div className="mt-6 h-56">
           <ResponsiveContainer>
             <BarChart data={response}>
@@ -31,8 +34,8 @@ export function ImpactCharts() {
         </div>
       </Reveal>
       <Reveal delay={0.1} className="liquid-glass p-6">
-        <h3 className="font-display text-lg font-semibold">Seguidores no LinkedIn</h3>
-        <p className="text-sm text-muted-foreground">+18% no trimestre</p>
+        <h3 className="font-display text-lg font-semibold">{t("Seguidores no LinkedIn")}</h3>
+        <p className="text-sm text-muted-foreground">{t("+18% no trimestre")}</p>
         <div className="mt-6 h-56">
           <ResponsiveContainer>
             <AreaChart data={audience}>

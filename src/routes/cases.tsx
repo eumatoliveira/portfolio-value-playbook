@@ -1,3 +1,4 @@
+import { useTranslation } from "@/components/LanguageProvider";
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import pluratalks from "@/assets/case-pluratalks.jpg";
@@ -28,20 +29,22 @@ const cases = [
 ];
 
 function Cases() {
+ const { t } = useTranslation();
+
   return (
     <SiteShell>
-      <PageHeader eyebrow="Cases" title={<>Cases de <span className="text-gradient">sucesso</span></>} text="Problema, solução e resultado — em projetos reais." />
+      <PageHeader eyebrow="Cases" title={<>{t("Cases de")}<span className="text-gradient">{t("sucesso")}</span></>} text="Problema, solução e resultado — em projetos reais." />
       <section className="mx-auto max-w-6xl px-5 pb-24"><CardSlides>
         {cases.map((c, i) => (
-          <Reveal key={c.title} className="space-y-5">
+          <Reveal key={t(c.title)} className="space-y-5">
             <motion.div whileHover={{ scale: 1.02 }} className="overflow-hidden rounded-3xl border border-border">
-              <img src={c.img} alt={c.title} width={1280} height={800} loading="lazy" className="aspect-[16/10] w-full object-cover" />
+              <img src={c.img} alt={t(c.title)} width={1280} height={800} loading="lazy" className="aspect-[16/10] w-full object-cover" />
             </motion.div>
             <div>
-              <span className="chip">{c.tag}</span>
-              <h2 className="mt-4 font-display text-3xl font-semibold">{c.title}</h2>
-              <p className="mt-4 text-muted-foreground"><strong className="text-foreground">Desafio:</strong> {c.problem}</p>
-              <p className="mt-2 text-muted-foreground"><strong className="text-foreground">Solução:</strong> {c.solution}</p>
+              <span className="chip">{t(c.tag)}</span>
+              <h2 className="mt-4 font-display text-3xl font-semibold">{t(c.title)}</h2>
+              <p className="mt-4 text-muted-foreground"><strong className="text-foreground">{t("Desafio:")}</strong> {t(c.problem)}</p>
+              <p className="mt-2 text-muted-foreground"><strong className="text-foreground">{t("Solução:")}</strong> {t(c.solution)}</p>
               <div className="mt-6 grid grid-cols-3 gap-3">
                 {c.metrics.map(([v, l]) => (
                   <div key={l} className="liquid-glass p-4">

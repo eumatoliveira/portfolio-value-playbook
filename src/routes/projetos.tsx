@@ -1,3 +1,4 @@
+import { useTranslation } from "@/components/LanguageProvider";
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader, SiteShell } from "@/components/SiteShell";
 import { projects } from "@/data/profile";
@@ -16,17 +17,19 @@ export const Route = createFileRoute("/projetos")({
 });
 
 function Projetos() {
+ const { t } = useTranslation();
+
   return (
     <SiteShell>
-      <PageHeader eyebrow="Projetos" title={<>Iniciativas em <span className="text-gradient">destaque</span></>} text="Venture building, plataformas de IA e governança." />
+      <PageHeader eyebrow="Projetos" title={<>{t("Iniciativas em")}<span className="text-gradient">{t("destaque")}</span></>} text="Venture building, plataformas de IA e governança." />
       <section className="mx-auto max-w-6xl px-5 pb-24"><CardSlides>
         {projects.map((p) => (
-          <article key={p.title} className="glass-card group p-8">
-            <span className="chip">{p.tag}</span>
-            <h2 className="mt-5 font-display text-2xl font-semibold">{p.title}</h2>
-            <p className="mt-3 text-muted-foreground">{p.text}</p>
+          <article key={t(p.title)} className="glass-card group p-8">
+            <span className="chip">{t(p.tag)}</span>
+            <h2 className="mt-5 font-display text-2xl font-semibold">{t(p.title)}</h2>
+            <p className="mt-3 text-muted-foreground">{t(p.text)}</p>
             <ul className="mt-6 flex flex-wrap gap-2 text-sm">
-              {p.points.map((x) => <li key={x} className="text-accent">✦ {x}</li>)}
+              {p.points.map((x) => <li key={x} className="text-accent">{t("✦")}{x}</li>)}
             </ul>
           </article>
         ))}

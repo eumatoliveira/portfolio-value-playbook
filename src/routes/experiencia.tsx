@@ -1,3 +1,4 @@
+import { useTranslation } from "@/components/LanguageProvider";
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader, SiteShell } from "@/components/SiteShell";
 import { experience } from "@/data/profile";
@@ -15,9 +16,11 @@ export const Route = createFileRoute("/experiencia")({
 });
 
 function Experiencia() {
+ const { t } = useTranslation();
+
   return (
     <SiteShell>
-      <PageHeader eyebrow="Experiência" title={<>Trajetória</>} text="Da operação à liderança de iniciativas de IA e transformação digital." />
+      <PageHeader eyebrow="Experiência" title={<>{t("Trajetória")}</>} text="Da operação à liderança de iniciativas de IA e transformação digital." />
       <section className="mx-auto max-w-4xl px-5 pb-24">
         <ol className="relative space-y-6 border-l border-border pl-8">
           {experience.map((e) => (
@@ -28,8 +31,8 @@ function Experiencia() {
                   <h2 className="font-display text-xl font-semibold">{e.company}</h2>
                   <span className="text-sm text-accent">{e.period}</span>
                 </div>
-                <p className="mt-1 text-sm font-medium text-foreground/80">{e.role}</p>
-                <p className="mt-3 text-muted-foreground">{e.text}</p>
+                <p className="mt-1 text-sm font-medium text-foreground/80">{t(e.role)}</p>
+                <p className="mt-3 text-muted-foreground">{t(e.text)}</p>
               </div>
             </li>
           ))}
