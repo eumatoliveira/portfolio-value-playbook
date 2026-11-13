@@ -80,7 +80,7 @@ function Simulador() {
               <ResponsiveContainer>
                 <PieChart>
                   <Pie data={q.chosen} dataKey="price" nameKey="label" innerRadius={45} outerRadius={70} paddingAngle={3} stroke="none">
-                    {q.chosen.map((s, i) => <Cell key={s.id} fill={colors[i % colors.length]} />)}
+                    {q.chosen.map((s, i) => <Cell key={s.id} fill={colors[i % colors.length] ?? colors[0]} />)}
                   </Pie>
                   <Tooltip formatter={(v) => brl(Number(v))} contentStyle={{ background: "var(--popover)", border: "1px solid var(--border)", borderRadius: 12 }} itemStyle={{ color: "var(--foreground)" }} />
                 </PieChart>
