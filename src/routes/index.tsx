@@ -64,7 +64,7 @@ function Index() {
           <div>
             <p className="eyebrow">Comunidade</p>
             <h2 className="mt-3 font-display text-3xl font-semibold">Conteúdo sobre IA em PT, EN e ES</h2>
-            <a href={profile.links[0].href} target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center gap-2 text-accent">Seguir no LinkedIn <ArrowRight className="size-4" /></a>
+            <a href={profile.links[0]!.href} target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center gap-2 text-accent">Seguir no LinkedIn <ArrowRight className="size-4" /></a>
           </div>
           <div className="grid grid-cols-2 gap-6">
             {audience.map((s) => (
