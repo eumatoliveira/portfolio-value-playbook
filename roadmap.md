@@ -17,3 +17,4 @@
 - [ ] Dados empresariais do CNPJ e refinamento visual inspirado na Apple
 - [ ] Foto e biografia ao final da home
 - [ ] Cobrança por hora com valores acessíveis e finais comerciais pedidos
+- [ ] Ajustar taxas para US$50 a US$100 por hora (pedido mais recente)
