@@ -20,7 +20,7 @@ export const Route = createFileRoute("/simulador")({
   component: Simulador,
 });
 
-const colors = ["var(--primary)", "var(--accent)", "var(--violet)", "var(--chart-4)", "var(--chart-5)"];
+import { chartColors as colors } from "@/lib/chart-colors";
 const groups = [...new Set(services.map((s) => s.group))];
 
 function Simulador() {
@@ -42,14 +42,14 @@ function Simulador() {
                 {services.filter((s) => s.group === g).map((s) => {
                   const on = ids.includes(s.id);
                   return (
-                    <motion.label key={s.id} whileTap={{ scale: 0.98 }} className={`liquid-glass flex cursor-pointer gap-3 p-5 ${on ? "is-active" : ""}`}>
-                      <Checkbox checked={on} onCheckedChange={() => toggle(s.id)} className="mt-1" />
+                    <motion.div role="checkbox" aria-checked={on} tabIndex={0} onClick={() => toggle(s.id)} onKeyDown={(e) => (e.key === " " || e.key === "Enter") && (e.preventDefault(), toggle(s.id))} key={s.id} whileTap={{ scale: 0.98 }} className={`liquid-glass flex cursor-pointer gap-3 p-5 ${on ? "is-active" : ""}`}>
+                      <Checkbox checked={on} tabIndex={-1} className="pointer-events-none mt-1" />
                       <div className="flex-1">
                         <p className="font-semibold">{s.label}</p>
                         <p className="mt-1 text-sm text-muted-foreground">{s.detail}</p>
                         <p className="mt-3 text-sm text-accent">{brl(s.price)} · {s.weeks} sem.</p>
                       </div>
-                    </motion.label>
+                    </motion.div>
                   );
                 })}
               </div>
@@ -82,7 +82,7 @@ function Simulador() {
                   <Pie data={q.chosen} dataKey="price" nameKey="label" innerRadius={45} outerRadius={70} paddingAngle={3} stroke="none">
                     {q.chosen.map((s, i) => <Cell key={s.id} fill={colors[i % colors.length]} />)}
                   </Pie>
-                  <Tooltip formatter={(v: number) => brl(v)} contentStyle={{ background: "var(--popover)", border: "1px solid var(--border)", borderRadius: 12 }} itemStyle={{ color: "var(--foreground)" }} />
+                  <Tooltip formatter={(v) => brl(Number(v))} contentStyle={{ background: "var(--popover)", border: "1px solid var(--border)", borderRadius: 12 }} itemStyle={{ color: "var(--foreground)" }} />
                 </PieChart>
               </ResponsiveContainer>
             </div>

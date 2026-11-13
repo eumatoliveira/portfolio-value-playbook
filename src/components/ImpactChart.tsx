@@ -1,5 +1,6 @@
 import { Area, AreaChart, Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { Reveal } from "./Motion";
+import { chartColors } from "@/lib/chart-colors";
 
 const response = [
   { name: "Antes", horas: 48 }, { name: "Mês 1", horas: 24 }, { name: "Mês 2", horas: 6 }, { name: "Hoje", horas: 0.25 },
@@ -18,11 +19,11 @@ export function ImpactCharts() {
         <div className="mt-6 h-56">
           <ResponsiveContainer>
             <BarChart data={response}>
-              <CartesianGrid stroke="var(--border)" vertical={false} />
-              <XAxis dataKey="name" stroke="var(--muted-foreground)" fontSize={12} />
-              <YAxis stroke="var(--muted-foreground)" fontSize={12} />
+              <CartesianGrid stroke="#ffffff1a" vertical={false} />
+              <XAxis dataKey="name" stroke="#8a95b8" fontSize={12} />
+              <YAxis stroke="#8a95b8" fontSize={12} />
               <Tooltip {...tip} cursor={{ fill: "var(--secondary)" }} />
-              <Bar dataKey="horas" fill="var(--primary)" radius={[8, 8, 0, 0]} />
+              <Bar dataKey="horas" fill={chartColors[0]} radius={[8, 8, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -35,15 +36,15 @@ export function ImpactCharts() {
             <AreaChart data={audience}>
               <defs>
                 <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="var(--accent)" stopOpacity={0.6} />
-                  <stop offset="100%" stopColor="var(--accent)" stopOpacity={0} />
+                  <stop offset="0%" stopColor={chartColors[1]} stopOpacity={0.6} />
+                  <stop offset="100%" stopColor={chartColors[1]} stopOpacity={0} />
                 </linearGradient>
               </defs>
-              <CartesianGrid stroke="var(--border)" vertical={false} />
-              <XAxis dataKey="m" stroke="var(--muted-foreground)" fontSize={12} />
-              <YAxis stroke="var(--muted-foreground)" fontSize={12} domain={[6000, 7600]} />
+              <CartesianGrid stroke="#ffffff1a" vertical={false} />
+              <XAxis dataKey="m" stroke="#8a95b8" fontSize={12} />
+              <YAxis stroke="#8a95b8" fontSize={12} domain={[6000, 7600]} />
               <Tooltip {...tip} />
-              <Area dataKey="v" name="Seguidores" stroke="var(--accent)" strokeWidth={2} fill="url(#g)" />
+              <Area dataKey="v" name="Seguidores" stroke={chartColors[1]} strokeWidth={2} fill="url(#g)" />
             </AreaChart>
           </ResponsiveContainer>
         </div>
