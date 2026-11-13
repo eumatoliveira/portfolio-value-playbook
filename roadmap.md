@@ -15,3 +15,5 @@
 - [ ] Tradução completa: português, inglês, espanhol, alemão e francês
 - [ ] Azul sem roxo, cantos amarelos com natureza e botões no estilo do print
 - [ ] Dados empresariais do CNPJ e refinamento visual inspirado na Apple
+- [ ] Foto e biografia ao final da home
+- [ ] Cobrança por hora com valores acessíveis e finais comerciais pedidos
