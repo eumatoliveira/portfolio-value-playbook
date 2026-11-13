@@ -52,7 +52,7 @@ export function QuoteBuilder() {
                   toggle(s.id);
                 }
               }}
-              whileTap={reduced ? undefined : { scale: 0.98 }}
+              whileTap={reduced ? {} : { scale: 0.98 }}
               className={`liquid-glass flex cursor-pointer items-start gap-3 p-5 ${on ? "is-active" : ""}`}
             >
               <Checkbox checked={on} tabIndex={-1} className="pointer-events-none mt-1" />
