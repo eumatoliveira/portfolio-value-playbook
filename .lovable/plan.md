@@ -17,8 +17,9 @@ Topo fixo com menu e rodapé com redes sociais em todas as páginas.
 - Fundo com gradientes luminosos animados, cartões com vidro fosco e bordas brilhantes, entrada suave dos elementos.
 - Imagem de destaque gerada no estilo do banner (ondas de luz + globo).
 
-## Pontos em aberto
-- Foto: o print tem sua foto bem pequena; posso usar um espaço com suas iniciais ou você envia uma foto em boa resolução.
+## Conteúdo extra
+- Foto: usar a foto enviada (retrato com blazer azul) no topo e na página Sobre.
+- Números do LinkedIn (sem dados de recrutamento, empresas ou recrutadores): 7,3 mil+ seguidores, 40 mil+ impressões em 90 dias, 20 mil+ pessoas alcançadas, +18% de crescimento de seguidores, conteúdo em 3 idiomas.
 - Idioma: textos em português (com termos técnicos em inglês).
 
 ## Técnico
