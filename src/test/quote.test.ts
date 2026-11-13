@@ -17,4 +17,14 @@ describe("simulador", () => {
   it("prazo: maior + metade dos demais", () => {
     expect(computeQuote(["genai", "discovery"]).weeks).toBe(7);
   });
+  it("serviços da home: 3 marcados = 10% de desconto", () => {
+    expect(computeQuote(["discovery", "genai", "automation"]).total).toBe(28800);
+  });
+  it("lista editável: ids únicos, preços e prazos positivos", () => {
+    expect(new Set(services.map((s) => s.id)).size).toBe(services.length);
+    services.forEach((s) => {
+      expect(s.price).toBeGreaterThan(0);
+      expect(s.weeks).toBeGreaterThan(0);
+    });
+  });
 });
