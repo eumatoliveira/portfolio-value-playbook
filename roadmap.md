@@ -10,3 +10,5 @@
 - [ ] Reconhecimento da Plura por startup de impacto com apoio de grupo da Insper JR
 - [ ] Área de clientes e administrador: login, chamados, serviços, atualizações e mensagens
 - [ ] Agendamento de suporte por Calendly ou Google Meet
+- [ ] Consultar site antigo e imagens de referência
+- [ ] História da seleção da Plura no Web Summit aos 22 anos
