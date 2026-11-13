@@ -6,6 +6,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Button } from "./ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { company } from "@/data/company";
+import { LanguageSelect } from "./LanguageProvider";
 
 const nav = [
   { to: "/", label: "Início" },
@@ -36,7 +37,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
               </Link>
             ))}
           </nav>
-          <div className="flex items-center gap-2"><Button asChild variant="secondary" className="rounded-full"><Link to={signedIn ? "/atendimento":"/auth"}>{signedIn ? "Atendimentos":"Entrar"}</Link></Button><Button variant="ghost" size="icon" className="lg:hidden" onClick={() => setOpen(!open)} aria-label="Menu">{open ? <X /> : <Menu />}</Button></div>
+          <div className="flex items-center gap-2"><LanguageSelect/><Button asChild variant="secondary" className="rounded-full"><Link to={signedIn ? "/atendimento":"/auth"}>{signedIn ? "Atendimentos":"Entrar"}</Link></Button><Button variant="ghost" size="icon" className="lg:hidden" onClick={() => setOpen(!open)} aria-label="Menu">{open ? <X /> : <Menu />}</Button></div>
         </div>
         {open && (
           <nav className="flex flex-col border-t border-border/60 px-5 py-3 lg:hidden">
