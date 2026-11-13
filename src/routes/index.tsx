@@ -11,6 +11,7 @@ import { audience, profile } from "@/data/profile";
 import { Reveal, Stagger, StaggerItem } from "@/components/Motion";
 import { FinancialResults } from "@/components/FinancialResults";
 import { SocialProof } from "@/components/SocialProof";
+import { ClientCompanies } from "@/components/ClientCompanies";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -36,7 +37,7 @@ function Index() {
           <Reveal>
             <p className="eyebrow">{t("Mansilla Consultoria em TI")}</p>
             <h1 className="mt-5 max-w-3xl font-display text-4xl font-semibold leading-[1.1] md:text-6xl">
-              {t("Turning")}<strong className="font-semibold">{t("Technology Complexity")}</strong> {t("Into")}{" "}
+              {t("Turning")}{" "}<strong className="font-semibold">{t("Technology Complexity")}</strong> {t("Into")}{" "}
               <strong className="text-gradient font-semibold">{t("Business Outcomes")}</strong>
             </h1>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground">
@@ -50,6 +51,7 @@ function Index() {
         </div>
       </section>
 
+      <ClientCompanies />
       <FinancialResults />
 
       <QuoteBuilder />
