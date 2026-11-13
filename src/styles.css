@@ -128,13 +128,23 @@
 @utility btn-glow {
   display: inline-flex; align-items: center; gap: .5rem; border-radius: 999px; padding: .85rem 1.6rem; font-weight: 600;
   background: var(--gradient-brand); color: var(--primary-foreground);
-  box-shadow: 0 10px 40px -10px var(--primary); transition: transform .2s;
-  &:hover { transform: translateY(-2px); }
+  box-shadow: 0 10px 40px -10px var(--primary); transition: transform .25s ease, box-shadow .25s ease, opacity .25s ease;
+  &:hover { transform: translateY(-2px); box-shadow: 0 14px 45px -10px var(--accent); }
+  &:active { transform: translateY(0); }
 }
 @utility btn-ghost {
   display: inline-flex; align-items: center; gap: .5rem; border-radius: 999px; padding: .85rem 1.6rem; font-weight: 600;
   border: 1px solid var(--border); background: color-mix(in oklab, var(--background) 50%, transparent); backdrop-filter: blur(8px);
-  &:hover { border-color: var(--accent); }
+  transition: border-color .25s ease, background-color .25s ease, transform .25s ease;
+  &:hover { border-color: var(--accent); transform: translateY(-2px); }
+  &:active { transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  .fade-up { animation: none; }
+  .aurora { animation: none; }
+  .btn-glow:hover, .btn-ghost:hover, .glass-card:hover, .liquid-glass:hover { transform: none; }
 }
 @utility portrait-ring {
   border-radius: 999px; padding: 6px; background: var(--gradient-brand);
