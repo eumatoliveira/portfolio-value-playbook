@@ -39,7 +39,7 @@ export function computeQuote(ids: string[], urgency: Urgency = "normal") {
   const total = Math.round((subtotal - discount) * urgencyFactor[urgency]);
   // Services run partly in parallel: longest item + 50% of the rest.
   const sorted = chosen.map((s) => s.weeks).sort((a, b) => b - a);
-  const rawWeeks = sorted.length ? sorted[0]! + sorted.slice(1).reduce((a, w) => a + w, 0) * 0.5 : 0;
+  const rawWeeks = sorted.length ? (sorted[0] ?? 0) + sorted.slice(1).reduce((a, w) => a + w, 0) * 0.5 : 0;
   const weeks = Math.ceil(urgency === "rapido" ? rawWeeks * 0.7 : rawWeeks);
   return { chosen, subtotal, rate, discount, total, weeks };
 }

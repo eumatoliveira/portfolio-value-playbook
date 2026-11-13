@@ -1,8 +1,11 @@
 import { Link } from "@tanstack/react-router";
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { Menu, X } from "lucide-react";
 import { profile } from "@/data/profile";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
+import { Button } from "./ui/button";
+import { supabase } from "@/integrations/supabase/client";
+import nature from "@/assets/nature-corners.jpg";
 
 const nav = [
   { to: "/", label: "Início" },
@@ -16,32 +19,37 @@ const nav = [
 
 export function SiteShell({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
+  const [signedIn, setSignedIn] = useState(false);
+  const reduced = useReducedMotion();
+  useEffect(() => { let active=true; void supabase.auth.getUser().then(({data})=>{if(active)setSignedIn(!!data.user);});const {data}=supabase.auth.onAuthStateChange((_event,session)=>setSignedIn(!!session));return()=>{active=false;data.subscription.unsubscribe();}; },[]);
   return (
     <div className="relative min-h-screen overflow-x-hidden">
       <div className="aurora" aria-hidden />
+      <img src={nature} alt="" aria-hidden className="nature-corner nature-corner-left" />
+      <img src={nature} alt="" aria-hidden className="nature-corner nature-corner-right" />
       <header className="fixed inset-x-0 top-0 z-50 border-b border-border/60 bg-background/70 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
           <Link to="/" className="font-display text-lg font-semibold tracking-tight">
             Matheus<span className="text-gradient">.ai</span>
           </Link>
-          <nav className="hidden gap-1 md:flex">
+          <nav className="hidden gap-1 lg:flex">
             {nav.map((n) => (
-              <Link key={n.to} to={n.to} activeOptions={{ exact: true }} className="rounded-full px-4 py-2 text-sm text-muted-foreground transition hover:text-foreground" activeProps={{ className: "bg-secondary text-foreground" }}>
+              <Link key={n.to} to={n.to} activeOptions={{ exact: true }} className="rounded-full px-3 py-2 text-sm text-muted-foreground transition hover:text-foreground" activeProps={{ className: "bg-secondary text-foreground" }}>
                 {n.label}
               </Link>
             ))}
           </nav>
-          <button className="md:hidden" onClick={() => setOpen(!open)} aria-label="Menu">{open ? <X /> : <Menu />}</button>
+          <div className="flex items-center gap-2"><Button asChild variant="secondary" className="rounded-full"><Link to={signedIn ? "/atendimento":"/auth"}>{signedIn ? "Atendimentos":"Entrar"}</Link></Button><Button variant="ghost" size="icon" className="lg:hidden" onClick={() => setOpen(!open)} aria-label="Menu">{open ? <X /> : <Menu />}</Button></div>
         </div>
         {open && (
-          <nav className="flex flex-col border-t border-border/60 px-5 py-3 md:hidden">
+          <nav className="flex flex-col border-t border-border/60 px-5 py-3 lg:hidden">
             {nav.map((n) => (
               <Link key={n.to} to={n.to} onClick={() => setOpen(false)} className="py-2 text-muted-foreground">{n.label}</Link>
             ))}
           </nav>
         )}
       </header>
-      <motion.main initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="relative pt-16">{children}</motion.main>
+      <motion.main initial={reduced ? false : { opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: reduced ? 0 : 0.3 }} className="relative pt-16">{children}</motion.main>
       <footer className="relative border-t border-border/60 py-10">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-5 text-sm text-muted-foreground md:flex-row">
           <p>© 2026 {profile.name}</p>
