@@ -4,20 +4,17 @@
 - [x] Cases de sucesso com imagens geradas
 - [x] Seção de sistemas/ferramentas que uso
 - [x] Animações (framer-motion), efeito liquid glass, gráficos
-- [ ] Fade e deslocamento nas seções da home, cards escalonados e botões suaves com movimento reduzido
-- [ ] Vídeo do YouTube como prova social na home
-- [ ] Exibir resultados financeiros em dólar (aguarda taxa de conversão)
-- [ ] Reconhecimento da Plura por startup de impacto com apoio de grupo da Insper JR
-- [ ] Área de clientes e administrador: login, chamados, serviços, atualizações e mensagens
-- [ ] Agendamento de suporte por Calendly ou Google Meet
-- [ ] Consultar site antigo e imagens de referência
-- [ ] História da seleção da Plura no Web Summit aos 22 anos
-- [ ] Tradução completa: português, inglês, espanhol, alemão e francês
-- [ ] Azul sem roxo, cantos amarelos com natureza e botões no estilo do print
-- [ ] Dados empresariais do CNPJ e refinamento visual inspirado na Apple
-- [ ] Foto e biografia ao final da home
-- [ ] Cobrança por hora com valores acessíveis e finais comerciais pedidos
-- [ ] Ajustar taxas para US$50 a US$100 por hora (pedido mais recente)
-- [ ] Remover plantas e usar fundo totalmente branco (substitui cantos amarelos/natureza)
-- [ ] Botões em preto e branco
-- [ ] Slides horizontais animados nos grupos de cards, movendo à esquerda ao rolar
+- [x] Fade e deslocamento nas seções da home, botões suaves e movimento reduzido
+- [x] Vídeo do YouTube como prova social na home
+- [x] Resultados financeiros em real, dólar e libra com cotação de referência
+- [x] Prêmio da Plura e história ALPHA Web Summit aos 22 anos
+- [x] Painéis cliente/admin: login, chamados, aceite, atualizações e mensagens (testados com contas temporárias)
+- [x] Calls por links Calendly/Google Meet, sem integração automática
+- [x] Site antigo e referências Apple consultados
+- [x] Dados empresariais, foto e biografia ao final
+- [x] Preços por hora US$50/US$100 em arquivo compartilhado
+- [x] Fundo branco sem plantas e botões preto/branco
+- [x] Slides horizontais em resultados, ferramentas, simulador da home, projetos e cases
+- [x] Seletor PT/EN/ES com dicionários locais
+- [ ] Completar DE/FR e revisar cobertura de textos dinâmicos — geração bloqueada por créditos de IA
+- [ ] Atribuir acesso administrativo real — aguarda conta verificada do proprietário

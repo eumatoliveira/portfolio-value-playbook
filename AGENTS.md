@@ -34,3 +34,5 @@ use the editor.
 - Support requests use authenticated server functions and owner/admin RLS; roles live only in the protected role table to prevent privilege escalation.
 - New accounts receive only client access; administrator access must be assigned to a verified account explicitly, never from signup metadata.
 - Support calls store administrator-provided Calendly or Meet links; do not imply automatic provider booking without a connected integration.
+- Store translations as local dictionaries and render them through React context; never translate customer messages or mutate React-owned DOM text.
+- Card slides use shared scroll-linked motion with native horizontal scrolling and arrow controls; reduced motion disables scroll-linked transforms.
