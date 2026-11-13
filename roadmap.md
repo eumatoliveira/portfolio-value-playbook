@@ -12,3 +12,4 @@
 - [ ] Agendamento de suporte por Calendly ou Google Meet
 - [ ] Consultar site antigo e imagens de referência
 - [ ] História da seleção da Plura no Web Summit aos 22 anos
+- [ ] Tradução completa: português, inglês, espanhol, alemão e francês
