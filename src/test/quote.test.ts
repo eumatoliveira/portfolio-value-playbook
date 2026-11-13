@@ -3,26 +3,27 @@ import { computeQuote, services } from "@/lib/quote";
 
 describe("simulador", () => {
   it("soma sem desconto com 2 serviços", () => {
-    expect(computeQuote(["discovery", "rca"]).total).toBe(574.8);
+    expect(computeQuote(["discovery", "rca"]).total).toBe(600);
   });
   it("aplica 10% com 3 serviços", () => {
-    expect(computeQuote(["discovery", "rca", "api"]).total).toBe(1495.08);
+    expect(computeQuote(["discovery", "rca", "api"]).total).toBe(1980);
   });
   it("aplica 15% com 5 serviços", () => {
-    expect(computeQuote(["discovery", "rca", "api", "pmo", "web"]).discount).toBe(594.06);
+    expect(computeQuote(["discovery", "rca", "api", "pmo", "web"]).discount).toBe(690);
   });
   it("urgência acrescenta 25%", () => {
-    expect(computeQuote(["discovery"], "rapido").total).toBe(479);
+    expect(computeQuote(["discovery"], "rapido").total).toBe(500);
   });
   it("prazo: maior + metade dos demais", () => {
     expect(computeQuote(["genai", "discovery"]).weeks).toBe(5);
   });
   it("serviços da home: 3 marcados = 10% de desconto", () => {
-    expect(computeQuote(["discovery", "genai", "automation"]).total).toBe(4199.04);
+    expect(computeQuote(["discovery", "genai", "automation"]).total).toBe(4320);
   });
-  it("cobra R$47,90 por hora de discovery, não uma mensalidade", () => {
-    expect(services.find(s=>s.id==="discovery")?.price).toBe(47.9);
-    expect(computeQuote(["discovery"]).total).toBe(383.2);
+  it("cobra US$50/h em discovery e US$100/h em IA", () => {
+    expect(services.find(s=>s.id==="discovery")?.price).toBe(50);
+    expect(services.find(s=>s.id==="genai")?.price).toBe(100);
+    expect(computeQuote(["discovery"]).total).toBe(400);
     expect(computeQuote(["discovery"]).hours).toBe(8);
   });
   it("lista editável: ids únicos, preços e prazos positivos", () => {

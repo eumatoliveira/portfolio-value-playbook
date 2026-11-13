@@ -28,12 +28,10 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <SiteShell>
-      <section className="portfolio-hero relative isolate overflow-hidden">
-        <img src={hero} alt="" width={1920} height={1088} className="absolute inset-0 -z-10 h-full w-full object-cover opacity-60" />
-        <div className="absolute inset-0 -z-10 bg-hero-fade" />
+      <section className="relative isolate overflow-hidden">
         <div className="mx-auto max-w-6xl px-5 py-16 md:py-24">
           <Reveal>
-            <p className="eyebrow">AI • Program Management • Governance</p>
+            <p className="eyebrow">Mansilla Consultoria em TI</p>
             <h1 className="mt-5 max-w-3xl font-display text-4xl font-semibold leading-[1.1] md:text-6xl">
               Turning <strong className="font-semibold">Technology Complexity</strong> Into{" "}
               <strong className="text-gradient font-semibold">Business Outcomes</strong>
@@ -46,6 +44,7 @@ function Index() {
               <a href={`mailto:${profile.email}`} className="btn-ghost"><Mail className="size-4" /> Fale comigo</a>
             </div>
           </Reveal>
+          <Reveal delay={0.1} className="mt-10"><img src={hero} alt="Tecnologia e conexões globais" width={1920} height={1088} className="h-48 w-full rounded-lg object-cover object-center md:h-56"/></Reveal>
         </div>
       </section>
 

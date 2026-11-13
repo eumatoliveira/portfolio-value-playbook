@@ -5,7 +5,6 @@ import { profile } from "@/data/profile";
 import { motion, useReducedMotion } from "framer-motion";
 import { Button } from "./ui/button";
 import { supabase } from "@/integrations/supabase/client";
-import nature from "@/assets/nature-corners.jpg";
 import { company } from "@/data/company";
 
 const nav = [
@@ -25,9 +24,6 @@ export function SiteShell({ children }: { children: ReactNode }) {
   useEffect(() => { let active=true; void supabase.auth.getUser().then(({data})=>{if(active)setSignedIn(!!data.user);});const {data}=supabase.auth.onAuthStateChange((_event,session)=>setSignedIn(!!session));return()=>{active=false;data.subscription.unsubscribe();}; },[]);
   return (
     <div className="relative min-h-screen overflow-x-hidden">
-      <div className="aurora" aria-hidden />
-      <img src={nature} alt="" aria-hidden loading="lazy" width={1024} height={1024} className="nature-corner nature-corner-left" />
-      <img src={nature} alt="" aria-hidden loading="lazy" width={1024} height={1024} className="nature-corner nature-corner-right" />
       <header className="fixed inset-x-0 top-0 z-50 border-b border-border/60 bg-background/70 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
           <Link to="/" className="font-display text-lg font-semibold tracking-tight">
