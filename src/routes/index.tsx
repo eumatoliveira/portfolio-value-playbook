@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Mail } from "lucide-react";
-import hero from "@/assets/hero-waves.jpg";
+import hero from "@/assets/hero-waves-blue.jpg";
 import portrait from "@/assets/matheus-portrait.jpeg.asset.json";
 import { SiteShell } from "@/components/SiteShell";
 import { Tools } from "@/components/Tools";
@@ -31,10 +31,10 @@ function Index() {
       <section className="relative isolate overflow-hidden">
         <img src={hero} alt="" width={1920} height={1088} className="absolute inset-0 -z-10 h-full w-full object-cover opacity-60" />
         <div className="absolute inset-0 -z-10 bg-hero-fade" />
-        <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-24 md:grid-cols-[1.4fr_1fr] md:py-32">
+        <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 py-14 md:grid-cols-[1.4fr_1fr] md:py-20">
           <Reveal>
             <p className="eyebrow">AI • Program Management • Governance</p>
-            <h1 className="mt-5 font-display text-5xl font-light leading-[1.05] tracking-tight md:text-7xl">
+            <h1 className="mt-5 font-display text-4xl font-light leading-[1.1] md:text-6xl">
               Turning <strong className="font-semibold">Technology Complexity</strong> Into{" "}
               <strong className="text-gradient font-semibold">Business Outcomes</strong>
             </h1>

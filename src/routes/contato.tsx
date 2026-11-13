@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ArrowUpRight, Mail, MessageCircle } from "lucide-react";
 import { PageHeader, SiteShell } from "@/components/SiteShell";
 import { profile } from "@/data/profile";
+import { company } from "@/data/company";
 
 export const Route = createFileRoute("/contato")({
   head: () => ({
@@ -35,6 +36,7 @@ function Contato() {
           </a>
         ))}
       </section>
+      <section className="mx-auto max-w-6xl px-5 pb-24"><h2 className="font-display text-2xl font-semibold">Dados empresariais</h2><dl className="mt-6 grid gap-x-10 gap-y-5 text-sm sm:grid-cols-2">{[["Razão Social",company.legalName],["Nome Fantasia",company.tradeName],["CNPJ",company.cnpj],["Data de Abertura",company.opened],["Situação Cadastral",company.status],["Atividade Principal (CNAE)",company.cnae],["Localização",company.location],["Telefone cadastral",company.phone],["E-mail",company.email]].map(([label,value])=><div key={label}><dt className="text-muted-foreground">{label}</dt><dd className="mt-1 break-words">{value}</dd></div>)}</dl></section>
     </SiteShell>
   );
 }

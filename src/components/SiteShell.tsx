@@ -6,6 +6,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Button } from "./ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import nature from "@/assets/nature-corners.jpg";
+import { company } from "@/data/company";
 
 const nav = [
   { to: "/", label: "Início" },
@@ -25,8 +26,8 @@ export function SiteShell({ children }: { children: ReactNode }) {
   return (
     <div className="relative min-h-screen overflow-x-hidden">
       <div className="aurora" aria-hidden />
-      <img src={nature} alt="" aria-hidden className="nature-corner nature-corner-left" />
-      <img src={nature} alt="" aria-hidden className="nature-corner nature-corner-right" />
+      <img src={nature} alt="" aria-hidden loading="lazy" width={1024} height={1024} className="nature-corner nature-corner-left" />
+      <img src={nature} alt="" aria-hidden loading="lazy" width={1024} height={1024} className="nature-corner nature-corner-right" />
       <header className="fixed inset-x-0 top-0 z-50 border-b border-border/60 bg-background/70 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
           <Link to="/" className="font-display text-lg font-semibold tracking-tight">
@@ -59,6 +60,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
             ))}
           </div>
         </div>
+        <div className="mx-auto mt-6 max-w-6xl border-t border-border pt-5 px-5 text-xs text-muted-foreground"><p>{company.tradeName} · {company.legalName}</p><p className="mt-2">CNPJ {company.cnpj} · {company.location}</p></div>
       </footer>
     </div>
   );
