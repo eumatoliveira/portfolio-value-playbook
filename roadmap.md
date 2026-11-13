@@ -14,3 +14,4 @@
 - [ ] História da seleção da Plura no Web Summit aos 22 anos
 - [ ] Tradução completa: português, inglês, espanhol, alemão e francês
 - [ ] Azul sem roxo, cantos amarelos com natureza e botões no estilo do print
+- [ ] Dados empresariais do CNPJ e refinamento visual inspirado na Apple
